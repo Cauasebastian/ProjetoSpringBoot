@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -18,6 +19,7 @@ public class User implements Serializable {
 	private String email;
 	private String phone;
 	private String password;
+	@JsonIgnore // ignora a propriedade orders no json retornado pelo método findAll()
 	@OneToMany(mappedBy = "client") // mappedBy = "client" é o nome da propriedade do outro lado da associação
 	private List<Order> orders = new ArrayList<>();
 
