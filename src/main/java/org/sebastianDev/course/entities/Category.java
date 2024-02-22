@@ -3,6 +3,9 @@ package org.sebastianDev.course.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "tb_category")
 public class Category implements Serializable {
@@ -11,6 +14,9 @@ public class Category implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+@ManyToMany(mappedBy = "categories") //mappedBy is a JPA annotation that indicates that the categories field in the Product class is the "inverse" side of the relationship. This means that the categories field in the Product class is the "owner" of the relationship, and it is responsible for managing the relationship between the
+   @Transient
+    private Set<Product> product = new HashSet<>(); //Set is a collection that allows duplicate elements. HashSet is a concrete implementation of Set that uses a hash table to store the elements. HashSet is a thread-safe class, meaning that it can be safely accessed from multiple threads concurrently.
 
     public Category() {
     }
@@ -34,6 +40,9 @@ public class Category implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+    public Set<Product> getProduct() {
+        return product;
     }
 
     @Override
