@@ -1,5 +1,6 @@
 package org.sebastianDev.course.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -14,8 +15,8 @@ public class Category implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-@ManyToMany(mappedBy = "categories") //mappedBy is a JPA annotation that indicates that the categories field in the Product class is the "inverse" side of the relationship. This means that the categories field in the Product class is the "owner" of the relationship, and it is responsible for managing the relationship between the
-   @Transient
+    @JsonIgnore //JsonIgnore is a Jackson annotation that indicates that the annotated field or method should be ignored during serialization or deserialization. This is useful when you want to exclude certain fields from being serialized or deserialized.
+    @ManyToMany(mappedBy = "categories") //mappedBy is a JPA annotation that indicates that the categories field in the Product class is the "inverse" side of the relationship. This means that the categories field in the Product class is the "owner" of the relationship, and it is responsible for managing the relationship between the
     private Set<Product> product = new HashSet<>(); //Set is a collection that allows duplicate elements. HashSet is a concrete implementation of Set that uses a hash table to store the elements. HashSet is a thread-safe class, meaning that it can be safely accessed from multiple threads concurrently.
 
     public Category() {
