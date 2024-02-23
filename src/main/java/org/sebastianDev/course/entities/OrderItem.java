@@ -5,15 +5,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import org.sebastianDev.course.entities.pk.OrderItemPK;
 
-import java.io.Serializable;
+import java.io.Serializ
 import java.util.Objects;
 
 @Entity
 @Table(name = "tb_order_item")
 public class OrderItem implements Serializable {
     private static final long serialVersionUID = 1L;
+
     @EmbeddedId//EmbeddedId is a JPA annotation that indicates that the class is an embedded primary key class. This means that the class contains a composite primary key, composed of multiple fields. The fields of the embedded primary key class are annotated with @Id and @GeneratedValue. This allows the JPA provider to generate the composite
-    private OrderItemPK id;
+    private OrderItemPK id = new OrderItemPK();
     private Integer quantity;
     private Double price;
 
