@@ -3,11 +3,7 @@ package org.sebastianDev.course.config;
 import java.time.Instant;
 import java.util.Arrays;
 
-import org.sebastianDev.course.entities.Category;
-import org.sebastianDev.course.entities.Order;
-import org.sebastianDev.course.entities.OrderItem;
-import org.sebastianDev.course.entities.Product;
-import org.sebastianDev.course.entities.User;
+import org.sebastianDev.course.entities.*;
 import org.sebastianDev.course.entities.enums.OrderStatus;
 import org.sebastianDev.course.repositories.CategoryRepository;
 import org.sebastianDev.course.repositories.OrderItemRepository;
@@ -75,5 +71,10 @@ public class TestConfig implements CommandLineRunner {
         OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
 
         orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
+
+        Payment pay1 = new Payment(null, Instant.parse("2019-06-20T21:53:07Z"), o1);
+        o1.setPayment(pay1);
+        orderRepository.save(o1);
     }
+
 }

@@ -24,9 +24,10 @@ public class Order implements Serializable {
     private User client ;
 
     @OneToMany(mappedBy = "id.order")
-private Set<OrderItem> items = new HashSet<>();
-    
+    private Set<OrderItem> items = new HashSet<>();
 
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL) //cascade = CascadeType.ALL means that when we delete an order, we also delete the associated payment.
+    private Payment payment;
     public Order() {
     }
     public Order(Long id, Instant moment,OrderStatus orderStatus,User client) {
@@ -67,6 +68,15 @@ private Set<OrderItem> items = new HashSet<>();
     public void setClient(User client) {
         this.client = client;
     }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
+
     public Set<OrderItem> getItems(){
         return items;
     }

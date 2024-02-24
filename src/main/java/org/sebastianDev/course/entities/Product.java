@@ -86,7 +86,7 @@ public class Product implements Serializable {
     }
 
     // Retrieve orders associated with this product
-    @JsonIgnore 
+    @JsonIgnore
     public Set<Order> getOrders() {
         Set<Order> set = new HashSet<>();
         for (OrderItem x : items) {
