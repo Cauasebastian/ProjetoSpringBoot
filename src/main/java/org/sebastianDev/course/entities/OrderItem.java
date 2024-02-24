@@ -2,6 +2,8 @@ package org.sebastianDev.course.entities;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -14,6 +16,7 @@ public class OrderItem implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @EmbeddedId
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private OrderItemPK id = new OrderItemPK(); // Inicializa a chave primária incorporada
 
     private Integer quantity;
@@ -36,7 +39,7 @@ public class OrderItem implements Serializable {
     public void setId(OrderItemPK id) {
         this.id = id;
     }
-
+    @JsonIgnore
     public Order getOrder() {
         return id.getOrder();
     }
