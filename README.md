@@ -22,7 +22,7 @@ O Projeto Web Services com Spring Boot e JPA / Hibernate é uma aplicação dese
 
 O modelo de domínio deste projeto é organizado da seguinte maneira:
 
-- Um Usuário pode possuir diversos Pedidos, sendo que cada Pedido está associado a apenas um Usuário.
+- Um Usuário pode possuir diversos pedidos(Order), sendo que cada pedidos está associado a apenas um Usuário.
 - Um Pedido possui um ou vários OrderItem(s), que representam os itens do pedido.
 - Cada OrderItem está associado a um ou mais Produtos, os quais podem pertencer a uma ou mais Categorias.
 - Um Pedido possui um status, definido por um enum `OrderStatus`, que indica o estado atual do pedido, como enviado, pago, aguardando pagamento, etc.
@@ -62,3 +62,9 @@ cd seu-repositorio
 
 # executar o projeto
 mvn spring-boot:run
+```
+# Autor
+
+Cauã Sebastian.Dev
+
+[LinkedIn](www.linkedin.com/in/cauã-sebastian-57a532259)
