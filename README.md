@@ -16,17 +16,25 @@ O Projeto Web Services com Spring Boot e JPA / Hibernate é uma aplicação dese
 - CRUD - Create, Retrieve, Update, Delete
 - Tratamento de exceções
 
-## Modelos de Domínio
-
-Para adicionar as fotos do modelo de domínio e instância, siga estas instruções:
+## Modelos de Banco de Dados
 
 ### Modelo de Domínio
 
-![Modelo de Domínio](caminho/para/modelo-de-dominio.png)
+O modelo de domínio deste projeto é organizado da seguinte maneira:
+
+- Um Usuário pode possuir diversos Pedidos, sendo que cada Pedido está associado a apenas um Usuário.
+- Um Pedido possui um ou vários OrderItem(s), que representam os itens do pedido.
+- Cada OrderItem está associado a um ou mais Produtos, os quais podem pertencer a uma ou mais Categorias.
+- Um Pedido possui um status, definido por um enum `OrderStatus`, que indica o estado atual do pedido, como enviado, pago, aguardando pagamento, etc.
+- Além disso, um Pedido também possui um pagamento associado, que inclui apenas o ID e o momento da transação.
+
+![Instância de Domínio](Domainmodel.png)
 
 ### Instância de Domínio
 
-![Instância de Domínio](caminho/para/instancia-de-dominio.png)
+Para uma melhor compreensão, veja uma instância de exemplo do modelo de domínio:
+
+![Instância de Domínio](Instancemodel.png)
 
 # Tecnologias Utilizadas
 
